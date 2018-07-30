@@ -1,0 +1,54 @@
+<HTML>
+<HEAD>
+
+<<meta charset="utf-8">
+<link rel="stylesheet" title="estilos.css" type="text/css" href="estilos.css">
+<title> CONVERSOR ARCHIVOS SANCOR RAFAELA PAQUETERIA </title>
+
+</HEAD>
+
+<body onload="maximizar()">
+
+<br>
+<br>
+<br>
+<br>
+
+<H5>Hoy es: <%=weekdayname(weekday(date()))%>, <%=date%></H5>
+<h1>SUC. OCA RAFAELA - PAQUETERIA (Oper. 288140 )</h1>
+<br>
+
+<hr size= 6 color="black"></hr>
+
+<br>
+
+<h3>Recuerde que el archivo que recibió de Sancor lo debe guardar en esta PC. Le será solicitada la ubicación donde lo grabó durante el proceso de conversión</h3>
+
+<br>
+
+<hr size= 6 color="black"></hr>
+
+<br>
+<br>
+
+<table align="center">
+<tr align="center"><td><input type="button" class="button" name="iniciar" onclick=location.href='cargaArchivo.asp' value="     INICIAR PROCESO     "></td></tr>
+</table>
+
+
+</script>
+
+<SCRIPT Language="javascript" type="text/javascript">
+
+function maximizar() {
+
+window.moveTo(0,0);
+
+window.resizeTo(screen.width,screen.height);
+}
+</SCRIPT>
+
+
+</body>
+
+</HTML>

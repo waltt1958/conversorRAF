@@ -1,0 +1,43 @@
+Destinatario Apellido|Destinatario Calle|Destinatario CP|Destinatario Localidad|Destinatario Provincia|Número de Operativa|Número de Guía
+Sucursal|Avda. CORDOBA 1776/78|1055| Buenos Aires|Buenos Aires|288140|1260100000000231521
+La Plata|Av. 13 N°33 entre 32 y 33|1900| La Plata|Buenos Aires|288140|1260100000000231522
+Pilar|Las Piedras 345 Edif. Boreau|1629| Pilar|Buenos Aires|288140|1260100000000231523
+Temperley|Hipólito Irigoyen 9976|1834| Temperley|Buenos Aires|288140|1260100000000231524
+Martinez|Av. Libertador 12925 |1640| Martinez|Buenos Aires|288140|1260100000000231525
+Belgrano|El Cano 3583|1426| Capital Federal|Buenos Aires|288140|1260100000000231526
+Ushuaia|AV. MAIPU 637|9410| Ushuaia|Buenos Aires|288140|1260100000000231527
+Tandil|CHACABUCO 472|7000| Tandil|Buenos Aires|288140|1260100000000231528
+Lincoln|Avda. 25 de Mayo 418|6070| Lincoln|Buenos Aires|288140|1260100000000231529
+Marcos Paz|Pellegrini 01 Esq. Rivadavia|1727| Marcos Paz|Buenos Aires|288140|1260100000000231530
+Tucuman|Av. SALTA 614|4000| Tucumán|Tucumán|288140|1260100000000231531
+salta|Av. Del Bicent. Bat. Salta 731|4400| Salta|Salta|288140|1260100000000231532
+Resistencia|Lopez y Planes 45|3500| Resistencia|Chaco|288140|1260100000000231533
+Corrientes|San Juan 1196|3400| Corrientes|Corrientes|288140|1260100000000231534
+Posadas|Av. Cabred 2106|3300| Posadas|Misiones|288140|1260100000000231535
+Bahía Blanca|ZELARRAYÁN 277 EDIF. SANCOR IX|8000| Bahía Blanca|Buenos Aires|288140|1260100000000231536
+Santa Rosa|Gral. Pico 106|6300| Santa Rosa|La Pampa|288140|1260100000000231537
+Mar del Plata|Av. Independencia 1881|7600| Mar del Plata|Buenos Aires|288140|1260100000000231538
+Sucursal|Avda. CORDOBA 1776/78|1055| Buenos Aires|Buenos Aires|288140|1260100000000231539
+Tucuman|Av. SALTA 614|4000| Tucumán|Tucumán|288140|1260100000000231540
+salta|Av. Del Bicent. Bat. Salta 731|4400| Salta|Salta|288140|1260100000000231541
+Resistencia|Lopez y Planes 45|3500| Resistencia|Chaco|288140|1260100000000231542
+Corrientes|San Juan 1196|3400| Corrientes|Corrientes|288140|1260100000000231543
+Posadas|Av. Cabred 2106|3300| Posadas|Misiones|288140|1260100000000231544
+La Plata|Av. 13 N°33 entre 32 y 33|1900| La Plata|Buenos Aires|288140|1260100000000231545
+Pilar|Las Piedras 345 Edif. Boreau|1629| Pilar|Buenos Aires|288140|1260100000000231546
+Temperley|Hipólito Irigoyen 9976|1834| Temperley|Buenos Aires|288140|1260100000000231547
+Martinez|Av. Libertador 12925 |1640| Martinez|Buenos Aires|288140|1260100000000231548
+Bahía Blanca|ZELARRAYÁN 277 EDIF. SANCOR IX|8000| Bahía Blanca|Buenos Aires|288140|1260100000000231549
+Santa Rosa|Gral. Pico 106|6300| Santa Rosa|La Pampa|288140|1260100000000231550
+Ushuaia|AV. MAIPU 637|9410| Ushuaia|Buenos Aires|288140|1260100000000231551
+Mar del Plata|Av. Independencia 1881|7600| Mar del Plata|Buenos Aires|288140|1260100000000231552
+Tandil|CHACABUCO 472|7000| Tandil|Buenos Aires|288140|1260100000000231553
+Lincoln|Avda. 25 de Mayo 418|6070| Lincoln|Buenos Aires|288140|1260100000000231554
+Loinaz Jorge Alberto  h|Cordoba 1464 - P.2 Edif.Ceres|2000| Rosario|Santa Fe|288140|1260100000000231555
+Grupo AeS Broker de Seguros|9 de Julio 1191|8332| General Roca|Río Negro|288140|1260100000000231556
+Lovelli - Roulet S.R.L.|Av. Cabred 2106|3300| Posadas|Misiones|288140|1260100000000231557
+Patricia Berardi/Op.|Rivadavia 611 Piso 4|1002| CABA|Buenos Aires|288140|1260100000000231558
+Banco de la Nacion Argentina|Mitre 326 LOCAL 328 3er Piso|1036| Capital Federal|Buenos Aires|288140|1260100000000231559
+Beneitez Adrian Pablo|Av. San Martín (Norte) 178|6360| General Pico|La Pampa|288140|1260100000000231560
+Tucuman|Av. SALTA 614|4000| Tucumán|Tucumán|288140|1260100000000231565
+salta|Av. Del Bicent. Bat. Salta 731|4400| Salta|Salta|288140|1260100000000231566
