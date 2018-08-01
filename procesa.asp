@@ -45,20 +45,42 @@ loop
 Set varArchivo = Nothing
 Set objFSO = Nothing
 
-sqlCLONAR= "INSERT INTO copiaSANCOR.Apellido, copiaSANCOR.Calle, copiaSANCOR.CP, copiaSANCOR.Localidad, copiaSANCOR.Provincia, copiaSANCOR.Operativa, copiaSANCOR.Guia) select Apellido, Calle,CP, Localidad, Provincia, Operativa, Guia from sancor"
-conectarOEP.execute sqlCLONAR
 
-' sqlCLONAR="select * into copiaSANCOR from sancor"
-' conectarOEP.execute sqlCLONAR
 
-sqlLIMPIA = "DELETE * from sancor"
-conectarOEP.execute sqlLIMPIA
+set rsCLONAR= Server.CreateObject("ADODB.recordset")
+sqlCLONAR = "select * from sancor"
+rsCLONAR.open sqlCLONAR, conectarOEP
 
-sqlALTERA = "ALTER TABLE copiaSANCOR ADD COLUMN DESTnombre TEXT(30), COLUMN DESTnumero text(5),COLUMN DESTpiso text(2),COLUMN DESTdepto text (4), COLUMN DESTtelefono text(15), column DESTemail text(50),column RETIdomicilio text(60), column RETInumero text(5),column RETIpiso text(2), column RETIdepto text(4), column RETItelefono text(15),column RETIcp text(8), column RETIlocalidad text(30), column RETIprov text(30), column RETIcontacto text(30), column PAQpeso integer, column PAQalto integer, column PAQlargo integer, column PAQancho integer, column PAQvalor integer, column NROremito text(13),column IMPremito integer,column NROproducto text(30), column RETIemail text(50), column observaciones text(200)"
-conectarOEP.execute sqlALTERA
+contar= rsCLONAR.count
 
-sqlACTUALIZA ="UPDATE copiaSANCOR SET copiaSANCOR.RETIdomicilio = 'Independencia', copiaSANCOR.RETInumero = '333', copiaSANCOR.RETIpiso ='0', copiaSANCOR.RETIdepto ='0', copiaSANCOR.RETIcp ='2322', copiaSANCOR.RETIlocalidad = 'Sunchales', copiaSANCOR.RETIprov = 'Santa Fe'"
-conectarOEP.execute sqlACTUALIZA
+FOR i=0 to contar
+
+	
+
+
+
+
+set rsARCHIVO= nothing
+rsARCHIVO.close
+
+
+
+
+
+
+'sqlCLONAR= "select * from copiaSANCOR from sancor"
+'sqlCLONAR= "INSERT INTO copiaSANCOR select * from sancor"
+'conectarOEP.execute sqlCLONAR
+
+'sqlALTERA = "ALTER TABLE copiaSANCOR ADD COLUMN DESTnombre TEXT(30), COLUMN DESTnumero text(5),COLUMN DESTpiso text(2),COLUMN DESTdepto text (4), COLUMN DESTtelefono text(15), column DESTemail text(50),column RETIdomicilio text(60), column RETInumero text(5),column RETIpiso text(2), column RETIdepto text(4), column RETItelefono text(15),column RETIcp text(8), column RETIlocalidad text(30), column RETIprov text(30), column RETIcontacto text(30), column PAQpeso integer, column PAQalto integer, column PAQlargo integer, column PAQancho integer, column PAQvalor integer, column NROremito text(13),column IMPremito integer,column NROproducto text(30), column RETIemail text(50), column observaciones text(200)"
+'conectarOEP.execute sqlALTERA
+
+'sqlACTUALIZA ="UPDATE copiaSANCOR SET copiaSANCOR.RETIdomicilio = 'Independencia', copiaSANCOR.RETInumero = '333', copiaSANCOR.RETIpiso ='0', copiaSANCOR.RETIdepto ='0', copiaSANCOR.RETIcp ='2322', copiaSANCOR.RETIlocalidad = 'Sunchales', copiaSANCOR.RETIprov = 'Santa Fe'"
+'conectarOEP.execute sqlACTUALIZA
+
+
+
+
 
 
 Set rsARCHIVO = Server.CreateObject("ADODB.recordset")
@@ -87,18 +109,22 @@ rsARCHIVO.MoveNext
 
 loop
 
-' sqlBORRA="DROP table copiaSANCOR"
-' conectarOEP.execute sqlBORRA
+
 
 Set rsARCHIVO= nothing
 rsARCHIVO.close	
 Set fso = nothing
 Set arcTEXTO = nothing
 
+sqlBORRA="DROP table copiaSANCOR"
+conectarOEP.execute sqlBORRA
 
 
+sqlLIMPIA = "DELETE * from sancor"
+conectarOEP.execute sqlLIMPIA
 
-
+'sqlBORRA= "DELETE * from copiaSANCOR"
+'conectarOEP.execute sqlBORRA
 
 
 
