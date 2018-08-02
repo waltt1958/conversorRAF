@@ -28,6 +28,12 @@
 recupera= request.form("NOMBREARCHIVO")
 archivo= "c:\inetpub\wwwroot\conversorRAF\" & recupera
 
+sqlLIMPIA = "DELETE * from sancor"
+conectarOEP.execute sqlLIMPIA
+
+sqlBORRA= "DELETE * from copiaSANCOR"
+conectarOEP.execute sqlBORRA
+
 Set objFSO = Server.CreateObject ("Scripting.FileSystemObject")
 
 Set varArchivo = objFSO.OpenTextFile (archivo,1)
@@ -51,13 +57,16 @@ set rsCLONAR= Server.CreateObject("ADODB.recordset")
 sqlCLONAR = "select * from sancor"
 rsCLONAR.open sqlCLONAR, conectarOEP
 
-contar= rsCLONAR.count
 
-FOR i=0 to contar
+do while not rsCLONAR.EOF
 
+	rsCLONAR.movefirst
+	sqlINSERT = "
+	conectarOEP.sqlINSERT (poner toda lasentencia más los datos fijos)
 	
+	rsCLONAR.movenext	
 
-
+loop
 
 
 set rsARCHIVO= nothing
@@ -116,15 +125,15 @@ rsARCHIVO.close
 Set fso = nothing
 Set arcTEXTO = nothing
 
-sqlBORRA="DROP table copiaSANCOR"
-conectarOEP.execute sqlBORRA
+'sqlBORRA="DROP table copiaSANCOR"
+'conectarOEP.execute sqlBORRA
 
 
 sqlLIMPIA = "DELETE * from sancor"
 conectarOEP.execute sqlLIMPIA
 
-'sqlBORRA= "DELETE * from copiaSANCOR"
-'conectarOEP.execute sqlBORRA
+sqlBORRA= "DELETE * from copiaSANCOR"
+conectarOEP.execute sqlBORRA
 
 
 
