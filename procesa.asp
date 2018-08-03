@@ -51,83 +51,53 @@ loop
 Set varArchivo = Nothing
 Set objFSO = Nothing
 
+sqlINSERT="INSERT INTO copiaSANCOR select * from sancor"
+conectarOEP.execute sqlINSERT
 
+sqlACTUALIZA ="UPDATE copiaSANCOR SET copiaSANCOR.RETIdomicilio = 'Independencia', copiaSANCOR.RETInumero = '333', copiaSANCOR.RETIpiso ='0', copiaSANCOR.RETIdepto ='0', copiaSANCOR.RETIcp ='2322', copiaSANCOR.RETIlocalidad = 'Sunchales', copiaSANCOR.RETIprov = 'Santa Fe'"
+conectarOEP.execute sqlACTUALIZA
 
-set rsCLONAR= Server.CreateObject("ADODB.recordset")
-sqlCLONAR = "select * from sancor"
-rsCLONAR.open sqlCLONAR, conectarOEP
+ Set rsARCHIVO = Server.CreateObject("ADODB.recordset")
 
+ sqlARCHIVO= "select * from copiaSANCOR"
 
-do while not rsCLONAR.EOF
+ rsARCHIVO.open sqlARCHIVO, conectarOEP
 
-	rsCLONAR.movefirst
-	sqlINSERT = "
-	conectarOEP.sqlINSERT (poner toda lasentencia más los datos fijos)
+   Set fso = Server.CreateObject ("Scripting.FileSystemObject")
+
+  Set arcTEXTO = fso.CreateTextFile(server.mappath("Archivo_Pauta_Meridiano.txt"), true)
+
+  texto1 = rsARCHIVO.Fields(0).name & "|" & rsARCHIVO.Fields(1).name & "|" & rsARCHIVO.Fields(2).name & "|" & rsARCHIVO.Fields(3).name & "|" & rsARCHIVO.Fields(04).name & "|" & _
+  rsARCHIVO.Fields(5).name & "|" & rsARCHIVO.Fields(6).name & "|" & rsARCHIVO.Fields(7).name & "|" & rsARCHIVO.Fields(8).name & "|" & rsARCHIVO.Fields(9).name & "|" & _
+  rsARCHIVO.Fields(10).name & "|" & rsARCHIVO.Fields(11).name & "|" & rsARCHIVO.Fields(12).name & "|" & rsARCHIVO.Fields(13).name & "|" & rsARCHIVO.Fields(14).name _
+  & "|" & rsARCHIVO.Fields(15).name & "|" & rsARCHIVO.Fields(16).name & "|" & rsARCHIVO.Fields(17).name & "|" & rsARCHIVO.Fields(18).name & "|" & _
+  rsARCHIVO.Fields(19).name & "|" & rsARCHIVO.Fields(20).name & "|" & rsARCHIVO.Fields(21).name & "|" & rsARCHIVO.Fields(22).name & "|" & _
+  rsARCHIVO.Fields(23).name & "|" & rsARCHIVO.Fields(24).name & "|" & rsARCHIVO.Fields(25).name & "|" & rsARCHIVO.Fields(26).name & "|" & rsARCHIVO.Fields(27).name _
+  & "|" & rsARCHIVO.Fields(28).name & "|" & rsARCHIVO.Fields(29).name & "|" & rsARCHIVO.Fields(30).name & "|" & rsARCHIVO.Fields(31).name
+  
+  arcTEXTO.WriteLine(texto1)
+ 
+  do while not rsARCHIVO.EOF
+
+  texto= rsARCHIVO.Fields("Apellido") & "|" & rsARCHIVO("Calle") & "|" & rsARCHIVO("CP") & "|" & rsARCHIVO("Localidad") & "|" & rsARCHIVO("Provincia") & "|" & _
+  rsARCHIVO("Operativa")  & "|" & rsARCHIVO("Guia") & "|" & rsARCHIVO("DESTnombre") & "|" & rsARCHIVO("DESTnumero") & "|" & rsARCHIVO("DESTpiso") & "|" & _
+  rsARCHIVO("DESTdepto") & "|" & rsARCHIVO("DESTtelefono") & "|" & rsARCHIVO("DESTemail") & "|" & rsARCHIVO("RETIdomicilio") & "|" & rsARCHIVO("RETInumero") _
+  & "|" & rsARCHIVO("RETIpiso") & "|" & rsARCHIVO("RETIdepto") & "|" & rsARCHIVO("RETItelefono") & "|" & rsARCHIVO("RETIcp") & "|" & rsARCHIVO("RETIlocalidad") _
+  & "|" & rsARCHIVO("RETIprov") & "|" & rsARCHIVO("RETIcontacto") & "|" & rsARCHIVO("PAQpeso") & "|" & rsARCHIVO("PAQalto") & "|" & rsARCHIVO("PAQlargo") _
+  & "|" & rsARCHIVO("PAQancho") & "|" & rsARCHIVO("PAQvalor") & "|" & rsARCHIVO("NROremito") & "|" & rsARCHIVO("IMPremito") & "|" & rsARCHIVO("NROproducto") _
+  & "|" & rsARCHIVO("RETIemail") & "|" & rsARCHIVO("observaciones")
+
+  arcTEXTO.WriteLine(texto)
+
+  rsARCHIVO.MoveNext
+
+  loop
+
+ rsARCHIVO.close
+ Set rsARCHIVO= nothing
 	
-	rsCLONAR.movenext	
-
-loop
-
-
-set rsARCHIVO= nothing
-rsARCHIVO.close
-
-
-
-
-
-
-'sqlCLONAR= "select * from copiaSANCOR from sancor"
-'sqlCLONAR= "INSERT INTO copiaSANCOR select * from sancor"
-'conectarOEP.execute sqlCLONAR
-
-'sqlALTERA = "ALTER TABLE copiaSANCOR ADD COLUMN DESTnombre TEXT(30), COLUMN DESTnumero text(5),COLUMN DESTpiso text(2),COLUMN DESTdepto text (4), COLUMN DESTtelefono text(15), column DESTemail text(50),column RETIdomicilio text(60), column RETInumero text(5),column RETIpiso text(2), column RETIdepto text(4), column RETItelefono text(15),column RETIcp text(8), column RETIlocalidad text(30), column RETIprov text(30), column RETIcontacto text(30), column PAQpeso integer, column PAQalto integer, column PAQlargo integer, column PAQancho integer, column PAQvalor integer, column NROremito text(13),column IMPremito integer,column NROproducto text(30), column RETIemail text(50), column observaciones text(200)"
-'conectarOEP.execute sqlALTERA
-
-'sqlACTUALIZA ="UPDATE copiaSANCOR SET copiaSANCOR.RETIdomicilio = 'Independencia', copiaSANCOR.RETInumero = '333', copiaSANCOR.RETIpiso ='0', copiaSANCOR.RETIdepto ='0', copiaSANCOR.RETIcp ='2322', copiaSANCOR.RETIlocalidad = 'Sunchales', copiaSANCOR.RETIprov = 'Santa Fe'"
-'conectarOEP.execute sqlACTUALIZA
-
-
-
-
-
-
-Set rsARCHIVO = Server.CreateObject("ADODB.recordset")
-
-sqlARCHIVO= "select * from copiaSANCOR"
-
-rsARCHIVO.open sqlARCHIVO, conectarOEP
-
-Set fso = Server.CreateObject ("Scripting.FileSystemObject")
-
-Set arcTEXTO = fso.CreateTextFile(server.mappath("Archivo_Pauta_Meridiano.txt"), true)
-
-do while not rsARCHIVO.EOF
-
-texto= rsARCHIVO.Fields("Apellido") & "|" & rsARCHIVO("Calle") & "|" & rsARCHIVO("CP") & "|" & rsARCHIVO("Localidad") & "|" & rsARCHIVO("Provincia") & "|" & _
-rsARCHIVO("Operativa")  & "|" & rsARCHIVO("Guia") & "|" & rsARCHIVO("DESTnombre") & "|" & rsARCHIVO("DESTnumero") & "|" & rsARCHIVO("DESTpiso") & "|" & _
-rsARCHIVO("DESTdepto") & "|" & rsARCHIVO("DESTtelefono") & "|" & rsARCHIVO("DESTemail") & "|" & rsARCHIVO("RETIdomicilio") & "|" & rsARCHIVO("RETInumero") _
-& "|" & rsARCHIVO("RETIpiso") & "|" & rsARCHIVO("RETIdepto") & "|" & rsARCHIVO("RETItelefono") & "|" & rsARCHIVO("RETIcp") & "|" & rsARCHIVO("RETIlocalidad") _
-& "|" & rsARCHIVO("RETIprov") & "|" & rsARCHIVO("RETIcontacto") & "|" & rsARCHIVO("PAQpeso") & "|" & rsARCHIVO("PAQalto") & "|" & rsARCHIVO("PAQlargo") _
-& "|" & rsARCHIVO("PAQancho") & "|" & rsARCHIVO("PAQvalor") & "|" & rsARCHIVO("NROremito") & "|" & rsARCHIVO("IMPremito") & "|" & rsARCHIVO("NROproducto") _
-& "|" & rsARCHIVO("RETIemail") & "|" & rsARCHIVO("observaciones")
-
-arcTEXTO.WriteLine(texto)
-
-rsARCHIVO.MoveNext
-
-loop
-
-
-
-Set rsARCHIVO= nothing
-rsARCHIVO.close	
-Set fso = nothing
-Set arcTEXTO = nothing
-
-'sqlBORRA="DROP table copiaSANCOR"
-'conectarOEP.execute sqlBORRA
-
+  Set fso = nothing
+  Set arcTEXTO = nothing
 
 sqlLIMPIA = "DELETE * from sancor"
 conectarOEP.execute sqlLIMPIA
@@ -138,7 +108,7 @@ conectarOEP.execute sqlBORRA
 
 
 ' FileName= request.form("NOMBREARCHIVO")
-' Response.Clear 
+'Response.Clear 
 ' Response.ContentType="application / octet-stream"  
 ' Response.AddHeader "content-disposition", "attachment; filename=" & FileName
 
