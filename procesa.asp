@@ -65,7 +65,7 @@ conectarOEP.execute sqlACTUALIZA
 
    Set fso = Server.CreateObject ("Scripting.FileSystemObject")
 
-  Set arcTEXTO = fso.CreateTextFile(server.mappath("Archivo_Pauta_Meridiano.txt"), true)
+  Set arcTEXTO = fso.CreateTextFile(server.mappath("bajaSANCOR.txt"), true)
 
   texto1 = rsARCHIVO.Fields(0).name & "|" & rsARCHIVO.Fields(1).name & "|" & rsARCHIVO.Fields(2).name & "|" & rsARCHIVO.Fields(3).name & "|" & rsARCHIVO.Fields(04).name & "|" & _
   rsARCHIVO.Fields(5).name & "|" & rsARCHIVO.Fields(6).name & "|" & rsARCHIVO.Fields(7).name & "|" & rsARCHIVO.Fields(8).name & "|" & rsARCHIVO.Fields(9).name & "|" & _
@@ -104,6 +104,22 @@ conectarOEP.execute sqlLIMPIA
 
 sqlBORRA= "DELETE * from copiaSANCOR"
 conectarOEP.execute sqlBORRA
+
+
+strfile= bajaSANCOR.txt
+Set objStream = Server.CreateObject("ADODB.Stream")
+objStream.Open
+objStream.Type = adTypeBinary
+objStream.LoadFromFile Server.MapPath (strfile)
+response.ContentType = "application/octet-stream"
+Response.AddHeader "Content-Disposition", "attachment; filename=" & strfile
+Response.AddHeader "Content-Length", strFileSize
+Response.Charset = "UTF-8"
+Response.ContentType = ContentType
+Response.BinaryWrite objStream.Read
+Response.Flush
+objStream.Close
+Set objStream = Nothing
 
 
 
