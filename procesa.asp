@@ -106,28 +106,26 @@ sqlBORRA= "DELETE * from copiaSANCOR"
 conectarOEP.execute sqlBORRA
 
 
-strfile= bajaSANCOR.txt
+strFilePath= Server.MapPath("bajaSANCOR.txt")
+strFileName= "bajaSANCOR.txt"
 Set objStream = Server.CreateObject("ADODB.Stream")
+objStream.Type= 1
+Response.CharSet = "UTF-8"
 objStream.Open
-objStream.Type = adTypeBinary
-objStream.LoadFromFile Server.MapPath (strfile)
-response.ContentType = "application/octet-stream"
-Response.AddHeader "Content-Disposition", "attachment; filename=" & strfile
-Response.AddHeader "Content-Length", strFileSize
-Response.Charset = "UTF-8"
-Response.ContentType = ContentType
-Response.BinaryWrite objStream.Read
-Response.Flush
+objStream.LoadFromFile Server.MapPath(strFileName)
+Response.AddHeader "Content-Disposition", "attachment; filename=" & strFileName
+Response.ContentType = "application/octet-stream"
+while not objStream.EOS
+Response.BinaryWrite objStream.Read(1024 * 64)
+Wend
 objStream.Close
 Set objStream = Nothing
 
 
-
-' FileName= request.form("NOMBREARCHIVO")
-'Response.Clear 
+' FileName= bajaSANCOR.txt
+' Response.Clear 
 ' Response.ContentType="application / octet-stream"  
 ' Response.AddHeader "content-disposition", "attachment; filename=" & FileName
-
 
 ' Set stream = Server.CreateObject("ADODB.stream") 
 ' stream.type = adTypeBinary 
