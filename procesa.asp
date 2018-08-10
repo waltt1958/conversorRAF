@@ -9,6 +9,8 @@
 
 <body onload="maximizar()">
 
+
+ARCHIVO</a>
 <!--#include virtual="/conectar.asp"-->
 
 <H5>Hoy es: <%=weekdayname(weekday(date()))%>, <%=date%></H5>
@@ -106,20 +108,21 @@ sqlBORRA= "DELETE * from copiaSANCOR"
 conectarOEP.execute sqlBORRA
 
 
-strFilePath= Server.MapPath("bajaSANCOR.txt")
-strFileName= "bajaSANCOR.txt"
-Set objStream = Server.CreateObject("ADODB.Stream")
-objStream.Type= 1
-Response.CharSet = "UTF-8"
-objStream.Open
-objStream.LoadFromFile Server.MapPath(strFileName)
-Response.AddHeader "Content-Disposition", "attachment; filename=" & strFileName
-Response.ContentType = "application/octet-stream"
-while not objStream.EOS
-Response.BinaryWrite objStream.Read(1024 * 64)
-Wend
-objStream.Close
-Set objStream = Nothing
+' strFilePath= Server.MapPath("bajaSANCOR.txt")
+'strFileName= "bajaSANCOR.txt
+
+' Set objStream = Server.CreateObject("ADODB.Stream")
+' objStream.Type= 1
+' Response.CharSet = "UTF-8"
+' objStream.Open
+' objStream.LoadFromFile strFilePath
+' Response.AddHeader "Content-Disposition", "attachment; filename=" & bajaSANCOR.txt'
+' Response.ContentType = "application/octet-stream"
+' while not objStream.EOS
+' Response.BinaryWrite objStream.Read(1024 * 64)
+' Wend
+' objStream.Close
+' Set objStream = Nothing
 
 
 ' FileName= bajaSANCOR.txt
@@ -162,6 +165,8 @@ Set objStream = Nothing
 ' end if
 %>
 
+
+<a href="../bajaSANCOR.txt" download="bajaSANCOR.txt">DESCARGAR 
 
 <!--#include virtual="/desconectar.asp"-->
 
