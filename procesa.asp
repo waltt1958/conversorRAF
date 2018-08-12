@@ -166,9 +166,13 @@ conectarOEP.execute sqlBORRA
 %>
 
 
-<a href="../bajaSANCOR.txt" download="bajaSANCOR.txt">DESCARGAR 
+<!-- <a href="../bajaSANCOR.txt" download="bajaSANCOR.txt">DESCARGAR 
 
 <!--#include virtual="/desconectar.asp"-->
+
+
+<a href="bajaArchivo.asp" target="_self"><input type="button" name="descarga" value="DESCARGAR ARCHIVO" style="FONT-SIZE: 20pt; border: 5px solid; [b]FONT-FAMILY: Verdana, boldt[/b];
+BACKGROUND-COLOR: #C0C0C0"></a>
 
 </script>
 
