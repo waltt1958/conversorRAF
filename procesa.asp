@@ -1,7 +1,7 @@
 <HTML>
 <HEAD>
 
-<meta charset="utf-8">
+
 <link rel="stylesheet" title="estilos.css" type="text/css" href="estilos.css">
 <title> CONVERSOR ARCHIVOS SANCOR RAFAELA PAQUETERIA </title>
 
@@ -27,7 +27,7 @@
 <%
 
 
-recupera= request.form("NOMBREARCHIVO")
+recupera= Session("archivo")
 archivo= "c:\inetpub\wwwroot\conversorRAF\" & recupera
 
 

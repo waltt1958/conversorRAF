@@ -1,127 +1,21 @@
-<HTML>
-<HEAD>
+<html>
 
-<meta charset="utf-8">
+<head>
+
 <link rel="stylesheet" title="estilos.css" type="text/css" href="estilos.css">
-<title> CONVERSOR ARCHIVOS SANCOR RAFAELA PAQUETERIA </title>
+</head>
 
-</HEAD>
-
-<body onload="maximizar()">
+<body>
 
 
-<H5>Hoy es: <%=weekdayname(weekday(date()))%>, <%=date%></H5>
 <h1>SUC. OCA RAFAELA - PAQUETERIA (Oper. 288140 )</h1>
-<br>
 
-He leído decenas de tutoriales sobre subir archivos al servidor usando ASP, en todos los casos lo que encontré fueron copias de un mismo procedimiento, con variaciones, o archivos que se pueden bajar, sin ninguna explicación.
-Si bien la mayoría sirve, ante cualquier variación que queremos realizar sobre esos archivos no se encuentran explicaciones detalladas de cómo se realizan.
-El presente instructivo, es una explicación detallada de cómo subir un archivo a un servidor, de forma sencilla y sin comprobaciones, como usan la mayoría de los ejemplos, que hacen que no se comprenda bien el proceso.
-Luego, el lector podrá agregarle a este procedimiento las complejidades necesarias para realizar esta acción.
-El presente instructivo es exclusivamente para subir un archivo, no comprobará el tamaño del archivo, ni otras consideraciones, pero partiendo de este código se podrá ampliar la programación, tan compleja como se quiera.
-Entonces, partimos de la hipótesis que necesitamos subir un archivo a desde nuestra máquina a un servidor remoto.
-Para ello armamos un formulario que contenga el campo y el botón examinar, que nos permite ver la carpeta local donde buscaremos el archivo. Esto sería:
-En código:
-<form id="form1" name="form1" method="POST" action="">
-<table>
-<tr>
-<td width="59%"><INPUT NAME="File1" SIZE=30 TYPE="file"></td>
-</tr>
-<tr><td> <input type="text" name="button" id="button" value="Enviar" /></td></tr>
-</table>
-</form>
- 
-Esto ubicará un campo, con un botón de examinar a la derecha. Y otro botón abajo, enviar, para iniciar la acción de subir al servidor el archivo
- 
-Cuando se presione el botón examinar, abre una ventana que muestra el contenido de las carpetas del servidor local.
- 
-Al seleccionar un archivo, quedará en el campo la dirección física donde se encuentra el archivo.
-Por ejemplo algo como esto: C:\imagenes\nombre.jpg
-Si el camino a la imagen es más largo, sería algo como esto: C:\carpeta\imagenes\nombre.jpg
- 
-Para aislar el nombre del archivo, en cualquier caso, tendría que identificar lo que haya hacia la derecha de la barra, \.
-En algunos foros, he visto que realizan una especie de función recursiva que rastrea cada \, hasta que llega a la última y ahí encuentra el nombre del archivo.
- 
-En mi ejemplo haré algo que considero más sencillo: invertiré todo el nombre, buscaré una sola vez la barra, extraeré el string que quede desde el comienzo hasta esa barra y volveré a invertir el archivo, con ello obtendré el nombre del archivo. Esto es mucho más rápido que una función que se ejecute varias veces para encontrar todas las barras.
- 
-Suponemos que el nombre del campo es: nombreArchivo.
-Invierto el campo:
+
+<%@LANGUAGE="VBSCRIPT"%> 
 
 <%
 
-Dim Invertida
-Invertida= strReverse(nombreArchivo)
-
-%>
-
-Esto daría como resultado en el contenido de invertir esto: “gpj.erbmon\senegami\ateprac\:C”
-Ahora, busco la primera barra:
-
-<%
-
-Dim dondeBarra
-dondeBarra= instr(Invertida,"\")
- 
-%>
- 
-Ahora en dondeBarra hay un número que indica en dónde encontró la barra, dentro de la variable Invertida, contando desde 1.
-Ahora extraigo la cadena de caracteres desde 1, hasta la barra, y le resto 1 carácter para extraer la misma barra.
-Para el ejemplo el valor que contiene dondeBarra es: 11, contando desde el principio e incluyendo la barra.
- 
-<%
-
-Dim Extraer
-Extraer= mid(Invertida,1,dondeBarra-1)
-
-%>
- 
-Ahora  Extraer contiene esto: gpj.erbmon
- 
-Sencillamente volvemos invertir y obtenemos el nombre del archivo:
-
-<% 
-
-Dim nombreFinal
-nombreFinal= strReverse(Extraer)
-
-%>
- 
-En este momento, en nombreFinal contiene “nombre.jpg”
- 
-Ahora, utilizamos un objeto que permitirá pasar el archivo al servidor remoto.
- 
-<% 
-
-Dim ForWriting, FileName
-ForWriting = 2
-                FileName=nombreFinal
-                Set fso = CreateObject("Scripting.FileSystemObject")
-                set f = fso.OpenTextFile("DireccionDeDestino\" & FileName, ForWriting, True)
-                f.Write FileName
-                Set f = nothing
-                Set fso = nothing
-
-				%>
- 
-Esto es todo.
-ForWriting es un parámetro del objeto fso que implica un GET, un tomar el archivo, y ForWriting es un parámetro que indica que se va a escribir en una carpeta.
-Direcciondedestino: es el lugar físico, cuidado, no confundir con una dirección http, que no lo es.
- 
-DirecciónDeDestino puede ser algo asi: “C:\inetpub\wwwroot\imagen\” y lo que hará es colocar el archivo copiado en ese sitio.
-Si en el servidor remoto se desconoce la dirección física en donde se desea copiar al archivo, se puede suplantar la línea con la siguiente:
- 
-Set f = fso.OpenTextFile(server.mappath("..") & "\imagen\" &  FileName, ForWriting, True)
- 
-Donde el objeto server.mapmath contiene la dirección física.
- 
-El archivo completo implicaría que primero debería verse el formulario, que nos permite elegir el archivo y luego de presionar el botón enviar, se ejecute la parte en que sube el archivo. Por ello, nuestra página se ejecuta, dos veces, una cuando abre el formulario, otra cuando sube, entonces iniciamos la página con una condición:
- 
-Esta función devuelve un 1 o un 2, cuando arranca es 1. En el formulario indicamos que en caso que sea 1, se muestre el formulario, y cuando sea 2, se ejecute la acción de subir archivo al servidor.
- 
-El archivo se llamara: upload.asp
- 
-<%
-
+response.buffer=true
 Func = Request("Func")
 if isempty(Func) Then
 Func = 1
@@ -131,48 +25,159 @@ Case 1
 
 %>
 
-<form id="form1" name="form1" method="POST" action="upload.asp">
-<table>
-<tr>
-<td width="59%"><INPUT NAME="File1" SIZE=30 TYPE="file"></td>
-</tr>
-<tr><td> <input type="text" name="button" id="button" value="Enviar" /></td></tr>
+<table width="360" border="0" align="center">
+  <tr>
+    <td>
+    <div align="center">
+      <h3>Seleccione el archivo que quiere procesar.</h3>
+    </div>
+    </td>
+  </tr>
 </table>
-</form>
-
-<%
+<form enctype="multipart/form-data" action="cargaArchivo.asp?func=2" method="POST" id="form1" name="form1">
+  <table align="center">
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td><h5>Presione el bot�n "SELECCIONAR ARCHIVO" y elija el archivo de su computadora.</h5> <br>
+            <br>
+      </font></td>
+    </tr>
+    <tr>
+      <td><font color="black" size="4"><b>Luego pulsa el bot�n subir.</b><br>
+      <br>
+      </font></td>
+    </tr>
+    <tr>
+      <td><strong><font color="black" size="4">Nombre del archivo...</font></strong></td>
+    </tr>
+    <tr>
+      <td><font size="2"><input name="File1" size="50" type="file"> 
+      </font></td>
+    </tr>
+    <tr>
+      <td align="left"><input type="submit" value="Subir"> <br>
+      <br>
+      </td>
+    </tr>
+    <tr>
+      <td><font color="black" size="4"><b>NOTA:</b> Espere, recibir� una notificaci�n cuando el archivo haya sido subido</font><font size="4">.<br>
+      <br>
+      </font></td>
+    </tr>
+  </table>
+  
+  
+  <% 'C�digo ASP
 
 Case 2
 
-Dim Invertida, dondeBarra, Extraer, nombreFinal
-Invertida= strReverse(nombreArchivo)
-dondeBarra= instr(Invertida,"\")
-Extraer= mid(Invertida,1,dondeBarra-1)
-nombreFinal= strReverse(Extraer)
-Dim ForWriting, FileName
 ForWriting = 2
-FileName=nombreFinal
-Set fso = CreateObject("Scripting.FileSystemObject")
-set f = fso.OpenTextFile("DireccionDeDestino\" & FileName, ForWriting, True)
-f.Write FileName
-Set f = nothing
-Set fso = nothing
+adLongVarChar = 201
+lngNumberUploaded = 0
 
-%>
+'Get binary data from form 
+noBytes = Request.TotalBytes 
+binData = Request.BinaryRead (noBytes)
 
-</script>
+'convery the binary data to a string
+Set RST = CreateObject("ADODB.Recordset")
+LenBinary = LenB(binData)
 
-<SCRIPT Language="javascript" type="text/javascript">
+if LenBinary > 0 Then
+	RST.Fields.Append "myBinary", adLongVarChar, LenBinary
+	RST.Open
+	RST.AddNew
+	RST("myBinary").AppendChunk BinData
+	RST.Update
+	strDataWhole = RST("myBinary")
+End if
 
-function maximizar() {
+strBoundry = Request.ServerVariables ("HTTP_CONTENT_TYPE")
+lngBoundryPos = instr(1,strBoundry,"boundary=") + 8 
+strBoundry = "--" & right(strBoundry,len(strBoundry)-lngBoundryPos)
 
-window.moveTo(0,0);
+'Get first file boundry positions.
+lngCurrentBegin = instr(1,strDataWhole,strBoundry)
+lngCurrentEnd = instr(lngCurrentBegin + 1,strDataWhole,strBoundry) - 1
 
-window.resizeTo(screen.width,screen.height);
-}
-</SCRIPT>
+Do While lngCurrentEnd > 0
+	'Get the data between current boundry and remove it from the whole.
+	strData = mid(strDataWhole,lngCurrentBegin, lngCurrentEnd - lngCurrentBegin)
+	strDataWhole = replace(strDataWhole,strData,"")
 
+	'Get the full path of the current file.
+	lngBeginFileName = instr(1,strdata,"filename=") + 10
+	lngEndFileName = instr(lngBeginFileName,strData,chr(34)) 
+	'Make sure they selected at least one file. 
+	if lngBeginFileName = lngEndFileName and lngNumberUploaded = 0 Then
+
+		Response.Write "<H2> Ha ocurrido el siguiente error.</H2>"
+		Response.Write "Debe elegir un archivo para subir"
+		Response.Write "<BR><BR>Pulse el bot�n VOLVER y realice la correcci�n."
+		Response.Write "<BR><BR><INPUT type='button' onclick='history.go(-1)' value='<< Volver' id='button'1 name='button'1>"
+		Response.End 
+	End if
+
+'There could be one or more empty file boxes. 
+
+if lngBeginFileName <> lngEndFileName Then
+	strFilename = mid(strData,lngBeginFileName,lngEndFileName - lngBeginFileName)
+
+
+	'Loose the path information and keep just the file name. 
+	tmpLng = instr(1,strFilename,"\")
+	Do While tmpLng > 0
+		PrevPos = tmpLng
+		tmpLng = instr(PrevPos + 1,strFilename,"\")
+	Loop
+
+	FileName = right(strFilename,len(strFileName) - PrevPos)
+
+	'Get the begining position of the file data sent.
+	'if the file type is registered with thebrowser then there will be a Content-Type
+	lngCT = instr(1,strData,"Content-Type:")
+
+	if lngCT > 0 Then
+		lngBeginPos = instr(lngCT,strData,chr(13) & chr(10)) + 4
+	Else
+		lngBeginPos = lngEndFileName
+	End if
+	'Get the ending position of the file dat
+	' a sent.
+	lngEndPos = len(strData) 
+
+	'Calculate the file size. 
+	lngDataLenth = lngEndPos - lngBeginPos
+	'Get the file data 
+	strFileData = mid(strData,lngBeginPos,lngDataLenth)
+
+	'Create the file. 
+	Set fso = CreateObject("Scripting.FileSystemObject")
+
+	'Lo guarda en la carpeta actual
+	Set f = fso.OpenTextFile(server.mappath(".\") & "/" & FileName, ForWriting, True)
+	f.Write strFileData
+	Set f = nothing
+	Set fso = nothing
+
+
+	lngNumberUploaded = lngNumberUploaded + 1
+
+	End if
+
+	'Get then next boundry postitions if any.
+	lngCurrentBegin = instr(1,strDataWhole,strBoundry)
+	lngCurrentEnd = instr(lngCurrentBegin + 1,strDataWhole,strBoundry) - 1
+loop
+
+Response.Write "Archivo subido<Br>"
+Response.Write lngNumberUploaded & " archivo ya est� en el servidor.<BR>"
+Response.Write "<BR><BR><INPUT type='button' onclick='document.location=" & chr(34) & "index.asp" & chr(34) & "' value='<< Continuar proceso' id='button'1 name='button'1>" 
+End Select 
+%></form>
 
 </body>
 
-</HTML>
+</html>

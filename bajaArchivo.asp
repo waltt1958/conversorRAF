@@ -1,7 +1,7 @@
 <HTML>
 <HEAD>
 
-<meta charset="utf-8">
+
 <link rel="stylesheet" title="estilos.css" type="text/css" href="estilos.css">
 <title> CONVERSOR ARCHIVOS SANCOR RAFAELA PAQUETERIA </title>
 
@@ -10,7 +10,6 @@
 <body onload="maximizar()">
 
 
-ARCHIVO</a>
 <!--#include virtual="/conectar.asp"-->
 
 <H5>Hoy es: <%=weekdayname(weekday(date()))%>, <%=date%></H5>
