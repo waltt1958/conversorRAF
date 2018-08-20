@@ -10,22 +10,17 @@ set objFolder=objFSO.GetFolder("c:\inetpub\wwwroot\conversorRAF\")
 
 for each objFile in objFolder.files
 
+Select case objFSO.GetExtensionName(objFile)
+case bbdd
+case clasico
+case forma
+case imagen
+case else
 
-if (objFSO.GetExtensionName(objFile)) <> bbdd then
 objFile.delete
-end if
+end select
 
-if (objFSO.GetExtensionName(objFile)) <> clasico then
-objFile.delete
-end if
 
-if (objFSO.GetExtensionName(objFile)) <> forma then
-objFile.delete
-end if
-
-if (objFSO.GetExtensionName(objFile)) <> imagen then
-objFile.delete
-end if
 
 next
 
