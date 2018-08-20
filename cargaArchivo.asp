@@ -172,11 +172,26 @@ if lngBeginFileName <> lngEndFileName Then
 	lngCurrentEnd = instr(lngCurrentBegin + 1,strDataWhole,strBoundry) - 1
 loop
 
-
+%>
+<div align="center">
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<font size="4">
+<b>
+<%
 Session("archivo")= FileName
 Response.Write "Archivo subido<Br>"
 Response.Write lngNumberUploaded & " archivo ya está en el servidor.<BR>"
-Response.Write "<BR><BR><INPUT type='button' onclick='document.location=" & chr(34) & "procesa.asp" & chr(34) & "' value='<< Continuar proceso' id='button'1 name='button'1>" 
+Response.Write "<BR><BR><INPUT type='button' class='button' onclick='document.location=" & chr(34) & "procesa.asp" & chr(34) & "' value='<< Continuar proceso' id='button'1 name='button'1>" 
+%>
+</b>
+</font>
+</div>
+<%
 End Select 
 %></form>
 

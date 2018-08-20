@@ -26,11 +26,8 @@
 
 <%
 
-
 recupera= Session("archivo")
 archivo= "c:\inetpub\wwwroot\conversorRAF\" & recupera
-
-
 
 sqlLIMPIA = "DELETE * from sancor"
 conectarOEP.execute sqlLIMPIA
@@ -41,6 +38,8 @@ conectarOEP.execute sqlBORRA
 Set objFSO = Server.CreateObject ("Scripting.FileSystemObject")
 
 Set varArchivo = objFSO.OpenTextFile (archivo,1)
+
+varArchivo.SkipLine
 
 Do while not varArchivo.AtEndOfStream
 
@@ -67,9 +66,14 @@ conectarOEP.execute sqlACTUALIZA
 
  rsARCHIVO.open sqlARCHIVO, conectarOEP
 
-   Set fso = Server.CreateObject ("Scripting.FileSystemObject")
+ actual= now()
 
-  Set arcTEXTO = fso.CreateTextFile(server.mappath("bajaSANCOR.txt"), true)
+ nombre= "SANCOR " & day(actual) & "-" & month(actual) & "-" & year(actual) & "  "& hour(actual) & "-" & Minute(actual) & "-" & Second(actual) & ".txt"
+ 
+  Set fso = Server.CreateObject ("Scripting.FileSystemObject")
+
+  'Set arcTEXTO = fso.CreateTextFile(server.mappath("bajaSANCOR.txt"), true)
+  Set arcTEXTO = fso.CreateTextFile(server.mappath(nombre), true)
 
   texto1 = rsARCHIVO.Fields(0).name & "|" & rsARCHIVO.Fields(1).name & "|" & rsARCHIVO.Fields(2).name & "|" & rsARCHIVO.Fields(3).name & "|" & rsARCHIVO.Fields(04).name & "|" & _
   rsARCHIVO.Fields(5).name & "|" & rsARCHIVO.Fields(6).name & "|" & rsARCHIVO.Fields(7).name & "|" & rsARCHIVO.Fields(8).name & "|" & rsARCHIVO.Fields(9).name & "|" & _
@@ -109,31 +113,11 @@ conectarOEP.execute sqlLIMPIA
 sqlBORRA= "DELETE * from copiaSANCOR"
 conectarOEP.execute sqlBORRA
 
+Session("nombreARC")= nombre
 
-'exportacion = "SANCOR" & format$(now, "dd-mm-yyyy hh-mm-ss")
-' texto = ".txt"
-' salida = exportacion & texto
-
-' if request.form("Enviar")<> " " then
-' response.write (salida)
-	' if request.form("NOMBREARCHIVO")<>" " then
-         ' response.write (request.form("nombrearchivo"))
-		 ' response.write ("viene el archivo")
-  ' Else
-  
-			' response.write ("xxx")
-	' End If
-' else
-
-' redireccionar a la pagina de carga con venta aviso de que no había archivo
-
-' end if
 %>
 
-
-
 <!--#include virtual="/desconectar.asp"-->
-
 
 <a href="bajaArchivo.asp" target="_self"><input type="button" name="descarga" value="DESCARGAR ARCHIVO" style="FONT-SIZE: 20pt; border: 5px solid; [b]FONT-FAMILY: Verdana, boldt[/b];
 BACKGROUND-COLOR: #C0C0C0"></a>
