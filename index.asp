@@ -3,21 +3,16 @@
 
 <meta charset="utf-8">
 <link rel="stylesheet" title="estilos.css" type="text/css" href="estilos.css">
-<title> CONVERSOR ARCHIVOS SANCOR RAFAELA PAQUETERIA </title>
+<title>CONVERSOR ARCHIVOS RAF</title>
 
 </HEAD>
 
 <body onload="maximizar()">
-
-<br>
-<br>
-<br>
 <br>
 
 <H5>Hoy es: <%=weekdayname(weekday(date()))%>, <%=date%></H5>
 <h1>SUC. OCA RAFAELA - PAQUETERIA (Oper. 288140 )</h1>
 <br>
-
 <hr size= 6 color="black"></hr>
 
 <br>
@@ -35,7 +30,31 @@
 <tr align="center"><td><input type="button" class="button" name="iniciar" onclick=location.href='cargaArchivo.asp' value="     INICIAR PROCESO     "></td></tr>
 </table>
 
+<%
+texto= "txt"
+bbdd= "mdb"
+clasico= "asp"
+forma= "css"
+imagen = "png"
 
+Set objFSO = server.CreateObject ("Scripting.FileSystemObject")
+set objFolder=objFSO.GetFolder("c:\inetpub\wwwroot\conversorRAF\")
+
+for each objFile in objFolder.files
+
+Select case objFSO.GetExtensionName(objFile)
+case bbdd
+case clasico
+case forma
+case imagen
+case else
+
+objFile.delete
+end select
+
+next
+
+%>
 </script>
 
 <SCRIPT Language="javascript" type="text/javascript">

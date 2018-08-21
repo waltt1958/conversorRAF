@@ -3,7 +3,7 @@
 
 
 <link rel="stylesheet" title="estilos.css" type="text/css" href="estilos.css">
-<title> CONVERSOR ARCHIVOS SANCOR RAFAELA PAQUETERIA </title>
+<title>CONVERSOR ARCHIVOS RAF</title>
 
 </HEAD>
 
@@ -119,9 +119,14 @@ Session("nombreARC")= nombre
 
 <!--#include virtual="/desconectar.asp"-->
 
+<table align="center">
+<tr>
+<td>
 <a href="bajaArchivo.asp" target="_self"><input type="button" name="descarga" value="DESCARGAR ARCHIVO" style="FONT-SIZE: 20pt; border: 5px solid; [b]FONT-FAMILY: Verdana, boldt[/b];
 BACKGROUND-COLOR: #C0C0C0"></a>
-
+</td>
+</tr>
+</table>
 </script>
 
 <SCRIPT Language="javascript" type="text/javascript">

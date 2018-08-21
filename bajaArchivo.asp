@@ -3,7 +3,7 @@
 
 
 <link rel="stylesheet" title="estilos.css" type="text/css" href="estilos.css">
-<title> CONVERSOR ARCHIVOS SANCOR RAFAELA PAQUETERIA </title>
+<title>CONVERSOR ARCHIVOS RAF</title>
 
 </HEAD>
 

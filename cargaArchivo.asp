@@ -53,7 +53,7 @@ Case 1
       <td><strong><font color="black" size="4">Nombre del archivo...</font></strong></td>
     </tr>
     <tr>
-      <td><font size="2"><input name="File1" size="50" type="file"> 
+      <td><font size="2"><input name="File1" size="100" accept=".txt" type="file"> 
       </font></td>
     </tr>
     <tr>
@@ -174,8 +174,6 @@ loop
 
 %>
 <div align="center">
-<br>
-<br>
 <br>
 <br>
 <br>
