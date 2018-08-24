@@ -1,9 +1,9 @@
 <HTML>
 <HEAD>
 
-<meta charset="utf-8">
+
 <link rel="stylesheet" title="estilos.css" type="text/css" href="estilos.css">
-<title> CONVERSOR ARCHIVOS SANCOR RAFAELA PAQUETERIA </title>
+<title>CONVERSOR ARCHIVOS RAF</title>
 
 </HEAD>
 
@@ -25,85 +25,108 @@
 <br>
 
 <%
-' recupera= request.form("NOMBREARCHIVO")
-' archivo= "c:\inetpub\wwwroot\conversorRAF\" & recupera
 
-' Set objFSO = Server.CreateObject ("Scripting.FileSystemObject")
+recupera= Session("archivo")
+archivo= "c:\inetpub\wwwroot\conversorRAF\" & recupera
 
-' Set varArchivo = objFSO.OpenTextFile (archivo,1)
+sqlLIMPIA = "DELETE * from sancor"
+conectarOEP.execute sqlLIMPIA
 
-  ' Do while not varArchivo.AtEndOfStream
+sqlBORRA= "DELETE * from copiaSANCOR"
+conectarOEP.execute sqlBORRA
 
-	' arrayLinea = split (varArchivo.ReadLine, "|", - 1,1)
+Set objFSO = Server.CreateObject ("Scripting.FileSystemObject")
 
-	' sqlinsert= "INSERT INTO sancor (Apellido, Calle, CP, Localidad,Provincia, Operativa, Guia) VALUES ( '" & arrayLinea(0) & "','" & arrayLinea(1) & "','" & arrayLinea(2) & "', '"& arrayLinea(3) & "','" & arrayLinea(4) & "','" & arrayLinea(5) & "','" & arrayLinea(6) & "')"
-	' conectarOEP.execute sqlinsert
-	
- ' loop 
-	
-' Set varArchivo = Nothing
-' Set objFSO = Nothing
+Set varArchivo = objFSO.OpenTextFile (archivo,1)
 
-' sqlCLONAR= "select * INTO copiaSANCOR from sancor"
-' conectarOEP.execute sqlCLONAR
+varArchivo.SkipLine
 
- ' sqlALTERA = "ALTER TABLE copiaSANCOR ADD COLUMN DESTnombre TEXT(30), COLUMN DESTnumero text(5),COLUMN DESTpiso text(2),COLUMN DESTdepto text (4), COLUMN DESTtelefono text(15), column DESTemail text(50),column RETIdomicilio text(60), column RETInumero text(5),column RETIpiso text(2), column RETIdepto text(4), column RETItelefono text(15),column RETIcp text(8), column RETIlocalidad text(30), column RETIprov text(30), column RETIcontacto text(30), column PAQpeso integer, column PAQalto integer, column PAQlargo integer, column PAQancho integer, column PAQvalor integer, column NROremito text(13),column IMPremito integer,column NROproducto text(30), column RETIemail text(50), column observaciones text(200)"
- ' conectarOEP.execute sqlALTERA
+Do while not varArchivo.AtEndOfStream
 
- ' sqlACTUALIZA= "UPDATE copiaSANCOR SET RETIdomicilio = 'Independencia', RETInumero = '333', RETIpiso = '0', RETIdepto = '0', RETIcp = '2322', RETIlocalidad = 'Sunchales', RETIprov = 'Santa Fe'"
+	 arrayLinea = split (varArchivo.ReadLine, "|", - 1,1)
 
- ' conectarOEP.execute sqlACTUALIZA
+	sqlinsert= "INSERT INTO sancor (Apellido, Calle, CP, Localidad,Provincia, Operativa, Guia) VALUES ( '" & left(arrayLinea(0),30) & "','" & left(arrayLinea(1),30) & "','" & arrayLinea(2) & "', '"& left(arrayLinea(3),30) & "','" & left(arrayLinea(4),30) & "','" & arrayLinea(5) & "','" & arrayLinea(6) & "')"
+	 
+	conectarOEP.execute (sqlinsert)
  
- conectarOEP.execute TransferText acExportDelim, "salidaSANCOR", "exportarSANCOR", "I:\aa\" & salida, True, ""
+loop 
 	
-'sqlLIMPIA = "DELETE * from sancor"
-'conectarOEP.execute sqlLIMPIA
+Set varArchivo = Nothing
+Set objFSO = Nothing
 
+sqlINSERT="INSERT INTO copiaSANCOR select * from sancor"
+conectarOEP.execute sqlINSERT
 
-'conectarOEP.execute "DROP table copiaSANCOR"
+sqlACTUALIZA ="UPDATE copiaSANCOR SET copiaSANCOR.RETIdomicilio = 'Independencia', copiaSANCOR.RETInumero = '333', copiaSANCOR.RETIpiso ='0', copiaSANCOR.RETIdepto ='0', copiaSANCOR.RETIcp ='2322', copiaSANCOR.RETIlocalidad = 'Sunchales', copiaSANCOR.RETIprov = 'Santa Fe'"
+conectarOEP.execute sqlACTUALIZA
 
-' FileName= request.form("NOMBREARCHIVO")
-' Response.Clear 
-' Response.ContentType="application / octet-stream"  
-' Response.AddHeader "content-disposition", "attachment; filename=" & FileName
+ Set rsARCHIVO = Server.CreateObject("ADODB.recordset")
 
-' Set stream = Server.CreateObject("ADODB.stream") 
-' stream.type = adTypeBinary 
-' stream.open
+ sqlARCHIVO= "select * from copiaSANCOR"
 
-' stream.LoadFromFile Server.MapPath(FileName)
-' While Not stream.EOS 
-' response.BinaryWrite stream.Read(1024 * 64)
-' Wend
+ rsARCHIVO.open sqlARCHIVO, conectarOEP
 
-' stream.Close
-' Set stream= Nothing
-' Response.Flush
-' Response.End
+ actual= now()
 
-'exportacion = "SANCOR" & format$(now, "dd-mm-yyyy hh-mm-ss")
-' texto = ".txt"
-' salida = exportacion & texto
+ nombre= "SANCOR " & day(actual) & "-" & month(actual) & "-" & year(actual) & "  "& hour(actual) & "-" & Minute(actual) & "-" & Second(actual) & ".txt"
+ 
+  Set fso = Server.CreateObject ("Scripting.FileSystemObject")
 
-' if request.form("Enviar")<> " " then
-' response.write (salida)
-	' if request.form("NOMBREARCHIVO")<>" " then
-         ' response.write (request.form("nombrearchivo"))
-		 ' response.write ("viene el archivo")
-  ' Else
+  'Set arcTEXTO = fso.CreateTextFile(server.mappath("bajaSANCOR.txt"), true)
+  Set arcTEXTO = fso.CreateTextFile(server.mappath(nombre), true)
+
+  texto1 = rsARCHIVO.Fields(0).name & "|" & rsARCHIVO.Fields(7).name & "|" & rsARCHIVO.Fields(1).name & "|" & rsARCHIVO.Fields(8).name & "|" & rsARCHIVO.Fields(9).name & "|" & _
+  rsARCHIVO.Fields(10).name & "|" & rsARCHIVO.Fields(2).name & "|" & rsARCHIVO.Fields(3).name & "|" & rsARCHIVO.Fields(4).name & "|" & rsARCHIVO.Fields(11).name & "|" & _
+  rsARCHIVO.Fields(12).name & "|" & rsARCHIVO.Fields(13).name & "|" & rsARCHIVO.Fields(14).name & "|" & rsARCHIVO.Fields(15).name & "|" & rsARCHIVO.Fields(16).name _
+  & "|" & rsARCHIVO.Fields(17).name & "|" & rsARCHIVO.Fields(18).name & "|" & rsARCHIVO.Fields(19).name & "|" & rsARCHIVO.Fields(20).name & "|" & _
+  rsARCHIVO.Fields(21).name & "|" & rsARCHIVO.Fields(22).name & "|" & rsARCHIVO.Fields(23).name & "|" & rsARCHIVO.Fields(24).name & "|" & _
+  rsARCHIVO.Fields(25).name & "|" & rsARCHIVO.Fields(26).name & "|" & rsARCHIVO.Fields(27).name & "|" & rsARCHIVO.Fields(5).name & "|" & rsARCHIVO.Fields(28).name _
+  & "|" & rsARCHIVO.Fields(6).name & "|" & rsARCHIVO.Fields(29).name & "|" & rsARCHIVO.Fields(30).name & "|" & rsARCHIVO.Fields(31).name
   
-			' response.write ("xxx")
-	' End If
-' else
+  arcTEXTO.WriteLine(texto1)
+ 
+  do while not rsARCHIVO.EOF
 
-' redireccionar a la pagina de carga con venta aviso de que no había archivo
+  texto= rsARCHIVO.Fields("Apellido") & "|" & rsARCHIVO("DESTnombre") & "|" & rsARCHIVO("Calle") & "|" & rsARCHIVO("DESTnumero") & "|" & rsARCHIVO("DESTpiso") & "|" & _
+  rsARCHIVO("DESTdepto")  & "|" & rsARCHIVO("CP") & "|" & rsARCHIVO("Localidad") & "|" & rsARCHIVO("Provincia") & "|" & rsARCHIVO("DESTtelefono") & "|" & _
+  rsARCHIVO("DESTemail") & "|" & rsARCHIVO("RETIdomicilio") & "|" & rsARCHIVO("RETInumero") & "|" & rsARCHIVO("RETIpiso") & "|" & rsARCHIVO("RETIdepto") _
+  & "|" & rsARCHIVO("RETItelefono") & "|" & rsARCHIVO("RETIcp") & "|" & rsARCHIVO("RETIlocalidad") & "|" & rsARCHIVO("RETIprov") & "|" & rsARCHIVO("RETIcontacto") _
+  & "|" & rsARCHIVO("PAQpeso") & "|" & rsARCHIVO("PAQalto") & "|" & rsARCHIVO("PAQalto") & "|" & rsARCHIVO("PAQancho") & "|" & rsARCHIVO("PAQvalor") _
+  & "|" & rsARCHIVO("NROremito") & "|" & rsARCHIVO("Operativa") & "|" & rsARCHIVO("IMPremito") & "|" & rsARCHIVO("Guia") & "|" & rsARCHIVO("NROproducto") _
+  & "|" & rsARCHIVO("RETIemail") & "|" & rsARCHIVO("observaciones")
 
-' end if
+  arcTEXTO.WriteLine(texto)
+
+  rsARCHIVO.MoveNext
+
+  loop
+
+ rsARCHIVO.close
+ Set rsARCHIVO= nothing
+	
+  Set fso = nothing
+  Set arcTEXTO = nothing
+
+sqlLIMPIA = "DELETE * from sancor"
+conectarOEP.execute sqlLIMPIA
+
+sqlBORRA= "DELETE * from copiaSANCOR"
+conectarOEP.execute sqlBORRA
+
+Session("nombreARC")= nombre
+
 %>
-
 
 <!--#include virtual="/desconectar.asp"-->
 
+<table align="center">
+<tr>
+<td>
+<a href="bajaArchivo.asp" target="_self"><input type="button" name="descarga" value="DESCARGAR ARCHIVO" style="FONT-SIZE: 20pt; border: 5px solid; [b]FONT-FAMILY: Verdana, boldt[/b];
+BACKGROUND-COLOR: #C0C0C0"></a>
+</td>
+</tr>
+</table>
 </script>
 
 <SCRIPT Language="javascript" type="text/javascript">

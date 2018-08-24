@@ -75,24 +75,24 @@ conectarOEP.execute sqlACTUALIZA
   'Set arcTEXTO = fso.CreateTextFile(server.mappath("bajaSANCOR.txt"), true)
   Set arcTEXTO = fso.CreateTextFile(server.mappath(nombre), true)
 
-  texto1 = rsARCHIVO.Fields(0).name & "|" & rsARCHIVO.Fields(1).name & "|" & rsARCHIVO.Fields(2).name & "|" & rsARCHIVO.Fields(3).name & "|" & rsARCHIVO.Fields(04).name & "|" & _
-  rsARCHIVO.Fields(5).name & "|" & rsARCHIVO.Fields(6).name & "|" & rsARCHIVO.Fields(7).name & "|" & rsARCHIVO.Fields(8).name & "|" & rsARCHIVO.Fields(9).name & "|" & _
-  rsARCHIVO.Fields(10).name & "|" & rsARCHIVO.Fields(11).name & "|" & rsARCHIVO.Fields(12).name & "|" & rsARCHIVO.Fields(13).name & "|" & rsARCHIVO.Fields(14).name _
-  & "|" & rsARCHIVO.Fields(15).name & "|" & rsARCHIVO.Fields(16).name & "|" & rsARCHIVO.Fields(17).name & "|" & rsARCHIVO.Fields(18).name & "|" & _
-  rsARCHIVO.Fields(19).name & "|" & rsARCHIVO.Fields(20).name & "|" & rsARCHIVO.Fields(21).name & "|" & rsARCHIVO.Fields(22).name & "|" & _
-  rsARCHIVO.Fields(23).name & "|" & rsARCHIVO.Fields(24).name & "|" & rsARCHIVO.Fields(25).name & "|" & rsARCHIVO.Fields(26).name & "|" & rsARCHIVO.Fields(27).name _
-  & "|" & rsARCHIVO.Fields(28).name & "|" & rsARCHIVO.Fields(29).name & "|" & rsARCHIVO.Fields(30).name & "|" & rsARCHIVO.Fields(31).name
+  texto1 = rsARCHIVO.Fields(0).name & "|" & rsARCHIVO.Fields(7).name & "|" & rsARCHIVO.Fields(1).name & "|" & rsARCHIVO.Fields(8).name & "|" & rsARCHIVO.Fields(9).name & "|" & _
+  rsARCHIVO.Fields(10).name & "|" & rsARCHIVO.Fields(2).name & "|" & rsARCHIVO.Fields(3).name & "|" & rsARCHIVO.Fields(4).name & "|" & rsARCHIVO.Fields(11).name & "|" & _
+  rsARCHIVO.Fields(12).name & "|" & rsARCHIVO.Fields(13).name & "|" & rsARCHIVO.Fields(14).name & "|" & rsARCHIVO.Fields(15).name & "|" & rsARCHIVO.Fields(16).name _
+  & "|" & rsARCHIVO.Fields(17).name & "|" & rsARCHIVO.Fields(18).name & "|" & rsARCHIVO.Fields(19).name & "|" & rsARCHIVO.Fields(20).name & "|" & _
+  rsARCHIVO.Fields(21).name & "|" & rsARCHIVO.Fields(22).name & "|" & rsARCHIVO.Fields(23).name & "|" & rsARCHIVO.Fields(24).name & "|" & _
+  rsARCHIVO.Fields(25).name & "|" & rsARCHIVO.Fields(26).name & "|" & rsARCHIVO.Fields(27).name & "|" & rsARCHIVO.Fields(5).name & "|" & rsARCHIVO.Fields(28).name _
+  & "|" & rsARCHIVO.Fields(6).name & "|" & rsARCHIVO.Fields(29).name & "|" & rsARCHIVO.Fields(30).name & "|" & rsARCHIVO.Fields(31).name
   
   arcTEXTO.WriteLine(texto1)
  
   do while not rsARCHIVO.EOF
 
-  texto= rsARCHIVO.Fields("Apellido") & "|" & rsARCHIVO("Calle") & "|" & rsARCHIVO("CP") & "|" & rsARCHIVO("Localidad") & "|" & rsARCHIVO("Provincia") & "|" & _
-  rsARCHIVO("Operativa")  & "|" & rsARCHIVO("Guia") & "|" & rsARCHIVO("DESTnombre") & "|" & rsARCHIVO("DESTnumero") & "|" & rsARCHIVO("DESTpiso") & "|" & _
-  rsARCHIVO("DESTdepto") & "|" & rsARCHIVO("DESTtelefono") & "|" & rsARCHIVO("DESTemail") & "|" & rsARCHIVO("RETIdomicilio") & "|" & rsARCHIVO("RETInumero") _
-  & "|" & rsARCHIVO("RETIpiso") & "|" & rsARCHIVO("RETIdepto") & "|" & rsARCHIVO("RETItelefono") & "|" & rsARCHIVO("RETIcp") & "|" & rsARCHIVO("RETIlocalidad") _
-  & "|" & rsARCHIVO("RETIprov") & "|" & rsARCHIVO("RETIcontacto") & "|" & rsARCHIVO("PAQpeso") & "|" & rsARCHIVO("PAQalto") & "|" & rsARCHIVO("PAQlargo") _
-  & "|" & rsARCHIVO("PAQancho") & "|" & rsARCHIVO("PAQvalor") & "|" & rsARCHIVO("NROremito") & "|" & rsARCHIVO("IMPremito") & "|" & rsARCHIVO("NROproducto") _
+  texto= rsARCHIVO.Fields("Apellido") & "|" & rsARCHIVO("DESTnombre") & "|" & rsARCHIVO("Calle") & "|" & rsARCHIVO("DESTnumero") & "|" & rsARCHIVO("DESTpiso") & "|" & _
+  rsARCHIVO("DESTdepto")  & "|" & rsARCHIVO("CP") & "|" & rsARCHIVO("Localidad") & "|" & rsARCHIVO("Provincia") & "|" & rsARCHIVO("DESTtelefono") & "|" & _
+  rsARCHIVO("DESTemail") & "|" & rsARCHIVO("RETIdomicilio") & "|" & rsARCHIVO("RETInumero") & "|" & rsARCHIVO("RETIpiso") & "|" & rsARCHIVO("RETIdepto") _
+  & "|" & rsARCHIVO("RETItelefono") & "|" & rsARCHIVO("RETIcp") & "|" & rsARCHIVO("RETIlocalidad") & "|" & rsARCHIVO("RETIprov") & "|" & rsARCHIVO("RETIcontacto") _
+  & "|" & rsARCHIVO("PAQpeso") & "|" & rsARCHIVO("PAQalto") & "|" & rsARCHIVO("PAQalto") & "|" & rsARCHIVO("PAQancho") & "|" & rsARCHIVO("PAQvalor") _
+  & "|" & rsARCHIVO("NROremito") & "|" & rsARCHIVO("Operativa") & "|" & rsARCHIVO("IMPremito") & "|" & rsARCHIVO("Guia") & "|" & rsARCHIVO("NROproducto") _
   & "|" & rsARCHIVO("RETIemail") & "|" & rsARCHIVO("observaciones")
 
   arcTEXTO.WriteLine(texto)
