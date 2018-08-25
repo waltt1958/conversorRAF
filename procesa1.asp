@@ -25,7 +25,6 @@
 <br>
 
 <%
-if Session("carga")= 1 then
 
 recupera= Session("archivo")
 archivo= "c:\inetpub\wwwroot\conversorRAF\" & recupera
@@ -46,7 +45,7 @@ Do while not varArchivo.AtEndOfStream
 
 	 arrayLinea = split (varArchivo.ReadLine, "|", - 1,1)
 
-	sqlinsert= "INSERT INTO sancor (Apellido, Calle, CP, Localidad,Provincia, Operativa, Guia) VALUES ( '" & left(arrayLinea(0),30) & "','" & left(arrayLinea(1),30) & "','" & arrayLinea(2) & "', '"& left(arrayLinea(3),30) & "','" & left(arrayLinea(4),30) & "','" & arrayLinea(5) & "','" & arrayLinea(6) & "')"
+	sqlinsert= "INSERT INTO sancor (Apellido, Calle, CP, Localidad,Provincia, Operativa, Guia) VALUES ( '" & arrayLinea(0) & "','" & arrayLinea(1) & "','" & arrayLinea(2) & "', '"& arrayLinea(3) & "','" & arrayLinea(4) & "','" & arrayLinea(5) & "','" & arrayLinea(6) & "')"
 	 
 	conectarOEP.execute (sqlinsert)
  
@@ -120,16 +119,6 @@ Session("nombreARC")= nombre
 
 <!--#include virtual="/desconectar.asp"-->
 
-<%
-
-else
-
-
-response.redirect ("index.asp")
-
-end if
-
-%>
 <table align="center">
 <tr>
 <td>

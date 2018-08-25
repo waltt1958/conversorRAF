@@ -54,6 +54,7 @@ end select
 
 next
 
+Session("inicio")= 1
 %>
 </script>
 

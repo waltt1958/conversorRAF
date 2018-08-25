@@ -14,6 +14,9 @@
 <%@LANGUAGE="VBSCRIPT"%> 
 
 <%
+if Session("inicio") = 1 then
+
+Session("carga")= 1
 
 response.buffer=true
 Func = Request("Func")
@@ -191,6 +194,14 @@ Response.Write "<BR><BR><INPUT type='button' class='button' onclick='document.lo
 </div>
 <%
 End Select 
+
+else	
+
+Session.Contents.Remove("inicio")
+response.redirect ("index.asp")
+
+end if
+
 %></form>
 
 </body>
