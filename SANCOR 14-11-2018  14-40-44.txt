@@ -1,0 +1,39 @@
+Apellido|DESTnombre|Calle|DESTnumero|DESTpiso|DESTdepto|CP|Localidad|Provincia|DESTtelefono|DESTemail|RETIdomicilio|RETInumero|RETIpiso|RETIdepto|RETItelefono|RETIcp|RETIlocalidad|RETIprov|RETIcontacto|PAQpeso|PAQalto|PAQlargo|PAQancho|PAQvalor|NROremito|Operativa|IMPremito|Guia|NROproducto|RETIemail|observaciones
+La Plata||Av. 13 N°33 entre 32 y 33||||1900| La Plata|Buenos Aires|||Independencia|333|0|0||2322|Sunchales|Santa Fe||||||||288140||1260100000000242207|||
+Pilar||Las Piedras 345 Edif. Boreau||||1629| Pilar|Buenos Aires|||Independencia|333|0|0||2322|Sunchales|Santa Fe||||||||288140||1260100000000242208|||
+Temperley||Hipólito Irigoyen 9976||||1834| Temperley|Buenos Aires|||Independencia|333|0|0||2322|Sunchales|Santa Fe||||||||288140||1260100000000242209|||
+Martinez||Av. Libertador 12925 ||||1640| Martinez|Buenos Aires|||Independencia|333|0|0||2322|Sunchales|Santa Fe||||||||288140||1260100000000242210|||
+Belgrano||El Cano 3583||||1426| Capital Federal|Buenos Aires|||Independencia|333|0|0||2322|Sunchales|Santa Fe||||||||288140||1260100000000242211|||
+Ushuaia||AV. MAIPU 637||||9410| Ushuaia|Buenos Aires|||Independencia|333|0|0||2322|Sunchales|Santa Fe||||||||288140||1260100000000242212|||
+Tandil||CHACABUCO 472||||7000| Tandil|Buenos Aires|||Independencia|333|0|0||2322|Sunchales|Santa Fe||||||||288140||1260100000000242213|||
+Lincoln||Avda. 25 de Mayo 418||||6070| Lincoln|Buenos Aires|||Independencia|333|0|0||2322|Sunchales|Santa Fe||||||||288140||1260100000000242214|||
+Sucursal||Avda. CORDOBA 1776/78||||1055| Buenos Aires|Buenos Aires|||Independencia|333|0|0||2322|Sunchales|Santa Fe||||||||288140||1260100000000242215|||
+Marcos Paz||Pellegrini 01 Esq. Rivadavia||||1727| Marcos Paz|Buenos Aires|||Independencia|333|0|0||2322|Sunchales|Santa Fe||||||||288140||1260100000000242216|||
+Banco de la Nacion Argentina||Mitre 326 LOCAL 328 3er Piso||||1036| Capital Federal|Buenos Aires|||Independencia|333|0|0||2322|Sunchales|Santa Fe||||||||288140||1260100000000242269|||
+Dentato Roberto José||San Lorenzo y Catamarca||||6740| Chacabuco|Buenos Aires|||Independencia|333|0|0||2322|Sunchales|Santa Fe||||||||288140||1260100000000242270|||
+Posada Ricardo Florentino||Libertad 327||||9400| Rio Gallegos|Santa Cruz|||Independencia|333|0|0||2322|Sunchales|Santa Fe||||||||288140||1260100000000242271|||
+Costa Juan Carlos||Del Castillo 298||||9407| Río Turbio|Santa Cruz|||Independencia|333|0|0||2322|Sunchales|Santa Fe||||||||288140||1260100000000242272|||
+Alonso Alejandro Eduardo||Alvarado 113||||6530| Carlos Casares|Buenos Aires|||Independencia|333|0|0||2322|Sunchales|Santa Fe||||||||288140||1260100000000242273|||
+Avellaneda Juan Pablo||Martin Fierro 3475||||1713| Parque Leloir|Buenos Aires|||Independencia|333|0|0||2322|Sunchales|Santa Fe||||||||288140||1260100000000242274|||
+Rodríguez Martín              ||Ceferino Namuncura 163||||9011|Caleta Olivia|Santa Cruz|||Independencia|333|0|0||2322|Sunchales|Santa Fe||||||||288140||1260100000000242275|||
+Elordi Martin||La Rioja 1270||||6500| Nueve de Julio|Buenos Aires|||Independencia|333|0|0||2322|Sunchales|Santa Fe||||||||288140||1260100000000242276|||
+TORRE LORENA MARIEL||Av. El Cano 3588 B° Belgrano||||1426| CABA|Buenos Aires|||Independencia|333|0|0||2322|Sunchales|Santa Fe||||||||288140||1260100000000242277|||
+Coop. de Trabajo de Prod. y As||Bolivar 332 - 6to. Piso||||1066| Capital Federal|Buenos Aires|||Independencia|333|0|0||2322|Sunchales|Santa Fe||||||||288140||1260100000000242278|||
+TROVATO HECTOR ALFREDO||Colón 1001 esquina Guido Spano||||7300|  Azul||||Independencia|333|0|0||2322|Sunchales|Santa Fe||||||||288140||1260100000000242279|||
+R & S Consultora de Riesgos S.||Humberto Primo 2169||||1229| Capital Federal|Buenos Aires|||Independencia|333|0|0||2322|Sunchales|Santa Fe||||||||288140||1260100000000242280|||
+Bescos Alejandro Javier||Avellaneda 111||||8340| Trenque Lauquen|Buenos Aires|||Independencia|333|0|0||2322|Sunchales|Santa Fe||||||||288140||1260100000000242281|||
+ASE Administradores S.A.||San Martin 954||||7000| Tandil|Buenos Aires|||Independencia|333|0|0||2322|Sunchales|Santa Fe||||||||288140||1260100000000242282|||
+Obesio Reynaldo Ricardo||Av. Del Valle 2965||||7400| Olavarria|Buenos Aires|||Independencia|333|0|0||2322|Sunchales|Santa Fe||||||||288140||1260100000000242283|||
+Palmieri Ernesto Guillermo    ||Av. Callao 1234 4 Piso Of. 409||||1023| Capital Federal|Buenos Aires|||Independencia|333|0|0||2322|Sunchales|Santa Fe||||||||288140||1260100000000242284|||
+Cuervo Flavio Alejandro||Av. San Martín 236||||9420| Rio Grande|Tierra del Fuego|||Independencia|333|0|0||2322|Sunchales|Santa Fe||||||||288140||1260100000000242285|||
+Zelione Adolfo Armando||Pte. Peron 3098||||1754|  San Justo|Buenos Aires|||Independencia|333|0|0||2322|Sunchales|Santa Fe||||||||288140||1260100000000242286|||
+Musso Hector Ricardo||Mariano Moreno 760||||6700| Lujan|Buenos Aires|||Independencia|333|0|0||2322|Sunchales|Santa Fe||||||||288140||1260100000000242287|||
+Cuicchi Gaveglio S.A.||25 de Mayo 815||||7300| Azul|Buenos Aires|||Independencia|333|0|0||2322|Sunchales|Santa Fe||||||||288140||1260100000000242288|||
+Federico Santos Ramón||6 de Agosto 331||||6015| Gral Viamonte|Buenos Aires|||Independencia|333|0|0||2322|Sunchales|Santa Fe||||||||288140||1260100000000242289|||
+MUICEY FAVIO CESAR||Eneas 126 Esq Av. Constitucion||||7167| Pinamar||||Independencia|333|0|0||2322|Sunchales|Santa Fe||||||||288140||1260100000000242290|||
+Morrone Mónica Mariana||AV. CARMEN 688 ||||7200| Las Flores|Buenos Aires|||Independencia|333|0|0||2322|Sunchales|Santa Fe||||||||288140||1260100000000242291|||
+Banco de Santa Cruz SA||Cerrito 740 piso 9||||1010| Capital Federal|Buenos Aires|||Independencia|333|0|0||2322|Sunchales|Santa Fe||||||||288140||1260100000000242292|||
+SANTA MONICA SA||9 de Julio 643||||7000| Tandil|Buenos Aires|||Independencia|333|0|0||2322|Sunchales|Santa Fe||||||||288140||1260100000000242293|||
+Euro Security S.A.||Dr. Emilio Ravignani 1470||||1414| Capital Federal|Buenos Aires|||Independencia|333|0|0||2322|Sunchales|Santa Fe||||||||288140||1260100000000242294|||
+Swett & Crawford S.A.||Marcelo T. de Alvear 2153/55||||1122| Capital Federal|Buenos Aires|||Independencia|333|0|0||2322|Sunchales|Santa Fe||||||||288140||1260100000000242295|||
+FEDERICO SANTOS RAMON||Av. 25 de Mayo 418||||6070| Lincoln|Buenos Aires|||Independencia|333|0|0||2322|Sunchales|Santa Fe||||||||288140||1260100000000242296|||

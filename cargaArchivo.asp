@@ -28,11 +28,11 @@ Case 1
 
 %>
 
-<table width="360" border="0" align="center">
+<table width="650" border="0" align="center">
   <tr>
     <td>
     <div align="center">
-      <h3>Seleccione el archivo que quiere procesar.</h3>
+      <h3>Seleccione el archivo que quiere procesar</h3>
     </div>
     </td>
   </tr>
@@ -43,7 +43,7 @@ Case 1
       <td>&nbsp;</td>
     </tr>
     <tr>
-      <td><h5>Presione el botón "SELECCIONAR ARCHIVO" y elija el archivo de su computadora.</h5> <br>
+      <td><h5>Presione el botón "SELECCIONAR ARCHIVO" y elija el archivo que quiere procesar.</h5> <br>
             <br>
       </font></td>
     </tr>
